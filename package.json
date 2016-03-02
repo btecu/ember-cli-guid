@@ -40,7 +40,12 @@
     "loader.js": "^4.0.0"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "ember-cli",
+    "guid",
+    "uuid",
+    "compact-guid",
+    "compact-uuid"
   ],
   "dependencies": {
     "ember-cli-babel": "^5.1.5"
