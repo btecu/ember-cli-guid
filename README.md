@@ -1,26 +1,32 @@
-# Ember-cli-guid
+# ember-cli-guid
 
-This README outlines the details of collaborating on this Ember addon.
+Addon with util for randomly generating **GUID** / **UUID**.
+The util can also compact and expand a **GUID** into and from a **string** using base64.
 
-## Installation
+A compact **GUID** is benefitial for shorter urls and for smaller transfers.
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
 
-## Running
+## Requirements
+`compact()` and `expand()` require IE10 or polyfill for `atob` and `btoa`.
 
-* `ember server`
-* Visit your app at http://localhost:4200.
 
-## Running Tests
+## Example
+```
+import Guid from 'ember-cli-guid';
 
-* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+let myGuid = Guid.create(); // '13ab9d6a-9aa4-40da-ae0d-21181c373e18'
+let myCompactedGuid = Guid.compact(myGuid); // 'ap2rE6Sa2kCuDSEYHDc-GA'
+let myExpandedGuid = Guid.expand(myCompactedGuid); // '13ab9d6a-9aa4-40da-ae0d-21181c373e18'
+```
 
-## Building
 
-* `ember build`
+## Serverside Use (C#)
+A compacted GUID can be easily expanded into GUID:
+```
+new Guid(Convert.FromBase64String(guid.Replace("_", "/").Replace("-","+") + "=="));
+```
 
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+Similarly, a GUID can be compacted:
+```
+Convert.ToBase64String(input.ToByteArray()).Substring(0, 22).Replace("/", "_").Replace("+", "-");
+```
