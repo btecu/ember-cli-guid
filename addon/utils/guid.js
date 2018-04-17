@@ -1,8 +1,10 @@
-import Ember from 'ember';
+import EmberObject from '@ember/object';
+import { A } from '@ember/array';
+import { isNone } from '@ember/utils';
 
 const GUID = /^[0-9a-f]{8}-?([0-9a-f]{4}-?){3}[0-9a-f]{12}$/i;
 
-export default Ember.Object.create({
+export default EmberObject.create({
   create() {
     let guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
 
@@ -39,7 +41,7 @@ export default Ember.Object.create({
   },
 
   expand(cguid) {
-    if (Ember.isNone(cguid) || cguid.length !== 22) {
+    if (isNone(cguid) || cguid.length !== 22) {
       return;
     }
 
@@ -52,7 +54,7 @@ export default Ember.Object.create({
       g.push(`00${item.toString(16).toLowerCase()}`.substr(-2, 2));
     }
 
-    let guid = Ember.A(g.slice(0, 4).reverse().concat(g.slice(4, 6).reverse())
+    let guid = A(g.slice(0, 4).reverse().concat(g.slice(4, 6).reverse())
       .concat(g.slice(6, 8).reverse()).concat(g.slice(8)));
 
     guid.insertAt(4, '-').insertAt(7, '-').insertAt(10, '-').insertAt(13, '-');
