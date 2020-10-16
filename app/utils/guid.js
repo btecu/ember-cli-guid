@@ -1,1 +1,1 @@
-export { default } from 'ember-cli-guid/utils/guid';
+export * from 'ember-cli-guid/utils/guid';

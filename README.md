@@ -7,17 +7,18 @@ The utility can also compact and expand a **GUID** into and from a **string** us
 A compact **GUID** is beneficial for shorter urls and for smaller transfers.
 
 
-## Requirements
-`compact()` and `expand()` require IE10 or polyfill for `atob` and `btoa`.
-
-
 ## Example
 ```
-import Guid from 'ember-cli-guid';
+import { compactGuid, createGuid, expandGuid } from 'ember-cli-guid';
 
-let myGuid = Guid.create(); // '13ab9d6a-9aa4-40da-ae0d-21181c373e18'
-let myCompactedGuid = Guid.compact(myGuid); // 'ap2rE6Sa2kCuDSEYHDc-GA'
-let myExpandedGuid = Guid.expand(myCompactedGuid); // '13ab9d6a-9aa4-40da-ae0d-21181c373e18'
+let myGuid = createGuid(); // '13ab9d6a-9aa4-40da-ae0d-21181c373e18'
+let myCompactedGuid = compactGuid(myGuid); // 'ap2rE6Sa2kCuDSEYHDc-GA'
+let myExpandedGuid = expandGuid(myCompactedGuid); // '13ab9d6a-9aa4-40da-ae0d-21181c373e18'
+```
+
+Note: `createGuid` can return a compact **GUID**:
+```
+createGuid(true); // 'kFy4uun_BkaUdbSGYW1PYQ'
 ```
 
 
