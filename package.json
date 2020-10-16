@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-guid",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "GUID / UUID generator, compactor and expander.",
   "keywords": [
     "ember-addon",
