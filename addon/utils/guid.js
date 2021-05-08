@@ -18,10 +18,16 @@ export function compactGuid(guid) {
   }
 
   let g = guid.replace(/-/g, '');
-  let rguid = g.substring(6, 8) + g.substring(4, 6) +
-    g.substring(2, 4) + g.substring(0, 2) +
-    g.substring(10, 12) + g.substring(8, 10) +
-    g.substring(14, 16) + g.substring(12, 14) + g.substring(16);
+  let rguid =
+    g.substring(6, 8) +
+    g.substring(4, 6) +
+    g.substring(2, 4) +
+    g.substring(0, 2) +
+    g.substring(10, 12) +
+    g.substring(8, 10) +
+    g.substring(14, 16) +
+    g.substring(12, 14) +
+    g.substring(16);
 
   let hex = rguid
     .replace(/\r|\n/g, '')
@@ -49,7 +55,8 @@ export function expandGuid(cguid) {
     g.push(`00${item.toString(16).toLowerCase()}`.substr(-2, 2));
   }
 
-  return g.slice(0, 4)
+  return g
+    .slice(0, 4)
     .reverse()
     .concat('-')
     .concat(g.slice(4, 6).reverse())
